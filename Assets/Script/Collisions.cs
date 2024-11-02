@@ -15,13 +15,9 @@ public class KillPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("cham ne");
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
@@ -31,14 +27,24 @@ public class KillPlayer : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex == 1 && number == 3)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
                 startPos = transform.position;
+                number = 0;
             }
-            else
+            else if (SceneManager.GetActiveScene().buildIndex == 3 && number == 3)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+                startPos = transform.position;
+                number = 0;
+            } 
+            else if (SceneManager.GetActiveScene().buildIndex == 0 )
+            {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-
+            else if (SceneManager.GetActiveScene().buildIndex == 5 )
+            {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
         else if (collision.gameObject.CompareTag("Key"))
         {

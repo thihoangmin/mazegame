@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     private int index =0;
@@ -23,8 +23,11 @@ public class Player : MonoBehaviour
             transform.Translate(-5 * Time.deltaTime,0,0);
         }
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(0,5 * Time.deltaTime,0);
+        { 
+            if (SceneManager.GetActiveScene().buildIndex == 5)
+                transform.Translate(0,10 * Time.deltaTime,0);
+            else
+                transform.Translate(0,5 * Time.deltaTime,0);
         }
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
